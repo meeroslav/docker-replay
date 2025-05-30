@@ -2,7 +2,9 @@
   "name": "@docker-replay/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "postinstall": "cp patches/life-cycle.js node_modules/nx/src/tasks-runner/life-cycle.js"
+  },
   "private": true,
   "devDependencies": {
     "@eslint/compat": "^1.1.1",

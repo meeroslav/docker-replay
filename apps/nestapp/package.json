@@ -53,7 +53,7 @@
         "dependsOn": [
           "build"
         ],
-        "command": "docker build -f apps/nestapp/Dockerfile . -t localhost:5001/api"
+        "command": "docker build --progress=plain -f apps/nestapp/Dockerfile . -t localhost:5001/api"
       }
     }
   }
