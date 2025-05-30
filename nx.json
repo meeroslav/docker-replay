@@ -10,7 +10,8 @@
       "!{projectRoot}/src/test-setup.[jt]s",
       "!{projectRoot}/test-setup.[jt]s",
       "!{projectRoot}/.eslintrc.json",
-      "!{projectRoot}/eslint.config.mjs"
+      "!{projectRoot}/eslint.config.mjs",
+      "!{projectRoot}/Dockerfile"
     ],
     "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
   },
@@ -57,6 +58,7 @@
   "targetDefaults": {
     "test": {
       "dependsOn": ["^build"]
-    }
+    },
+    "build": {}
   }
 }
