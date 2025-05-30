@@ -1,0 +1,60 @@
+{
+  "name": "@docker-replay/nestapp",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "targets": {
+      "build": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "webpack-cli build",
+          "args": [
+            "node-env=production"
+          ]
+        },
+        "configurations": {
+          "development": {
+            "args": [
+              "node-env=development"
+            ]
+          }
+        }
+      },
+      "serve": {
+        "continuous": true,
+        "executor": "@nx/js:node",
+        "defaultConfiguration": "development",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "buildTarget": "@docker-replay/nestapp:build",
+          "runBuildTargetDependencies": false
+        },
+        "configurations": {
+          "development": {
+            "buildTarget": "@docker-replay/nestapp:build:development"
+          },
+          "production": {
+            "buildTarget": "@docker-replay/nestapp:build:production"
+          }
+        }
+      },
+      "test": {
+        "options": {
+          "passWithNoTests": true
+        }
+      },
+      "docker-build": {
+        "inputs": [
+          "production",
+          "{projectRoot}/Dockerfile"
+        ],
+        "dependsOn": [
+          "build"
+        ],
+        "command": "docker build -f apps/nestapp/Dockerfile . -t localhost:5001/api"
+      }
+    }
+  }
+}
