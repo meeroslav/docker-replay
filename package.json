@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "postinstall": "cp patches/life-cycle.js node_modules/nx/src/tasks-runner/life-cycle.js"
+    "postinstall": "cp .nx/patches/life-cycle.js node_modules/nx/src/tasks-runner/life-cycle.js"
   },
   "private": true,
   "devDependencies": {
